@@ -1,79 +1,150 @@
-const { src, dest, watch, series, parallel } = require("gulp");
+const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const cssnano = require("gulp-cssnano");
-const rename = require("gulp-rename");
-const uglify = require("gulp-uglify");
-const concat = require("gulp-concat");
-const imagemin = require("gulp-imagemin");
-const browserSync = require("browser-sync").create();
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps');
+const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
+const notify = require('gulp-notify');
+const gulpIf = require('gulp-if');
+const babel = require('gulp-babel');
+const terser = require('gulp-terser');
+const concat = require('gulp-concat');
+const imagemin = require('gulp-imagemin');
+const browserSync = require('browser-sync').create();
+const fileInclude = require('gulp-file-include');
+const { deleteAsync } = require('del');
 
-// Шляхи до файлів
+const isProd = process.argv.includes('--prod');
+
 const paths = {
-    html: { src: "app/html/*.html", dest: "dist/" },
-    scss: { src: "app/scss/**/*.scss", dest: "dist/css/" },
-    js:   { src: "app/js/*.js", dest: "dist/js/" },
-    img:  { src: "app/img/**/*.{png,jpg,jpeg,svg,gif,webp}", dest: "dist/img/" }
+    root: 'dist',
+    html: {
+        src: ['app/html/*.html', '!app/html/_*.html'],
+        watch: 'app/html/**/*.html',
+        dest: 'dist/'
+    },
+    scss: {
+        src: 'app/scss/main.scss',
+        watch: 'app/scss/**/*.scss',
+        dest: 'dist/css/'
+    },
+    js: {
+        src: ['app/js/**/*.js', '!app/js/**/*.test.js'],
+        watch: 'app/js/**/*.js',
+        dest: 'dist/js/'
+    },
+    img: {
+        src: 'app/img/**/*.{png,jpg,jpeg,svg,gif,webp}',
+        dest: 'dist/img/'
+    },
+    bootstrap: {
+        css: {
+            src: 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+            dest: 'dist/css/'
+        },
+        js: {
+            src: 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+            dest: 'dist/js/'
+        }
+    }
 };
 
-// Просте копіювання HTML файлів без використання include
+const plumberNotify = (title) =>
+    plumber({
+        errorHandler: notify.onError({
+            title,
+            sound: false,
+            message: 'Error: <%= error.message %>'
+        })
+    });
+
+function clean() {
+    return deleteAsync([paths.root]);
+}
+
 function html() {
     return src(paths.html.src)
+        .pipe(plumberNotify('HTML'))
+        .pipe(fileInclude({ prefix: '@@', basepath: '@file', indent: true }))
         .pipe(dest(paths.html.dest))
         .pipe(browserSync.stream());
 }
 
-// SCSS → CSS з мініфікацією
 function styles() {
-    return src(paths.scss.src)
-        .pipe(sass().on("error", sass.logError))
-        .pipe(cssnano())
-        .pipe(rename({ suffix: ".min" }))
-        .pipe(dest(paths.scss.dest))
+    return src(paths.scss.src, { sourcemaps: !isProd })
+        .pipe(plumberNotify('SCSS'))
+        .pipe(sass({ outputStyle: 'expanded' }))
+        .pipe(autoprefixer({ cascade: false }))
+        .pipe(gulpIf(isProd, cleanCSS({ level: 2 })))
+        .pipe(rename({ basename: 'main', suffix: '.min' }))
+        .pipe(dest(paths.scss.dest, { sourcemaps: '.' }))
         .pipe(browserSync.stream());
 }
 
-// JS (об’єднання + мініфікація)
 function scripts() {
-    return src(paths.js.src)
-        .pipe(concat("bundle.js"))
-        .pipe(uglify())
-        .pipe(rename({ suffix: ".min" }))
-        .pipe(dest(paths.js.dest))
+    return src(paths.js.src, { sourcemaps: !isProd })
+        .pipe(plumberNotify('Scripts'))
+        .pipe(concat('resume.js'))
+        .pipe(
+            babel({
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            targets: '> 0.25%, not dead'
+                        }
+                    ]
+                ]
+            })
+        )
+        .pipe(gulpIf(isProd, terser()))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(dest(paths.js.dest, { sourcemaps: '.' }))
         .pipe(browserSync.stream());
 }
 
-// Оптимізація картинок
 function images() {
-    return src(paths.img.src)
-        .pipe(imagemin())
-        .pipe(dest(paths.img.dest));
+    return src(paths.img.src).pipe(gulpIf(isProd, imagemin())).pipe(dest(paths.img.dest));
 }
 
-// BrowserSync + watcher
-function serve() {
-    browserSync.init({
-        server: { baseDir: "dist" },
-        open: false,
-        notify: false
-    });
-
-    // Відслідковуємо зміни в HTML, SCSS, JS та зображеннях
-    watch(paths.html.src, series(html, reload));
-    watch(paths.scss.src, styles);
-    watch(paths.js.src, scripts);
-    watch(paths.img.src, series(images, reload));
+function bootstrapCss() {
+    return src(paths.bootstrap.css.src).pipe(dest(paths.bootstrap.css.dest));
 }
 
-// Функція для перезавантаження браузера
+function bootstrapJs() {
+    return src(paths.bootstrap.js.src).pipe(dest(paths.bootstrap.js.dest));
+}
+
 function reload(done) {
     browserSync.reload();
     done();
 }
 
-// Збірка
-const build = series(parallel(html, styles, scripts, images));
+function serve() {
+    browserSync.init({
+        server: { baseDir: paths.root },
+        notify: false,
+        open: false,
+        ui: false,
+        ghostMode: false
+    });
 
-// Експортуємо задачі
-exports.default = series(build, serve);
+    watch(paths.html.watch, html);
+    watch(paths.scss.watch, styles);
+    watch(paths.js.watch, scripts);
+    watch(paths.img.src, series(images, reload));
+}
+
+const assets = parallel(html, styles, scripts, images, bootstrapCss, bootstrapJs);
+const build = series(clean, assets);
+
+exports.clean = clean;
+exports.html = html;
+exports.styles = styles;
+exports.scripts = scripts;
 exports.images = images;
+exports.bootstrap = parallel(bootstrapCss, bootstrapJs);
+exports.build = build;
 exports.serve = serve;
+exports.default = series(build, serve);

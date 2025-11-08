@@ -1,0 +1,77 @@
+.resume-header {
+  background: radial-gradient(circle at top right, rgba(69, 89, 255, 0.18), transparent 55%),
+  radial-gradient(circle at bottom left, rgba(255, 166, 43, 0.18), transparent 60%),
+  $color-surface;
+  position: relative;
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.resume-header__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+}
+
+.resume-header__avatar {
+  width: clamp(128px, 22vw, 168px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(69, 89, 255, 0.15), rgba(69, 89, 255, 0));
+  display: grid;
+  place-items: center;
+  padding: 0.65rem;
+  box-shadow: 0 24px 60px rgba(30, 41, 59, 0.18);
+
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.resume-header__eyebrow {
+  margin: 0;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  color: $color-primary;
+  font-size: 0.75rem;
+}
+
+.resume-header__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 700;
+}
+
+.resume-header__subtitle {
+  margin: 0.3rem 0 1.2rem;
+  color: $color-muted;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.resume-header__description {
+  margin: 0;
+  color: $color-muted;
+  max-width: 48ch;
+  line-height: 1.7;
+}
+
+@media (max-width: 767.98px) {
+  .resume-header__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .resume-header__avatar {
+    margin: 0 auto;
+  }
+
+  .resume-header__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

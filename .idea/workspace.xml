@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3e2c8ab-2b6d-4f44-8985-ff11e9f77b30" name="Changes" comment="ю">
+      <change afterPath="$PROJECT_DIR$/app/html/_header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/html/_main-content.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/html/_sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/js/resume.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/layout/_base.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/layout/_content.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/layout/_header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/layout/_sidebar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/layout/main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/utils/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scss/utils/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/rex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yuriilenivpm2024-alt&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yuriilenivpm2024-alt/pm_23_11.git&quot;,
+    &quot;accountId&quot;: &quot;12c007c8-3ddc-46c6-b74d-465f4261c333&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="33kVCKJI0sc9eBPiFU7HhRjtRfz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/лабки web/Labka_1",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3e2c8ab-2b6d-4f44-8985-ff11e9f77b30" name="Changes" comment="" />
+      <created>1759860928705</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759860928705</updated>
+      <workItem from="1759860930373" duration="3601000" />
+      <workItem from="1759901893682" duration="3348000" />
+      <workItem from="1759910922814" duration="136000" />
+      <workItem from="1761675821422" duration="2752000" />
+      <workItem from="1761682794516" duration="1333000" />
+      <workItem from="1762080254045" duration="541000" />
+      <workItem from="1762081044219" duration="58000" />
+      <workItem from="1762507532334" duration="65000" />
+      <workItem from="1762518761289" duration="653000" />
+      <workItem from="1762606853447" duration="523000" />
+    </task>
+    <task id="LOCAL-00001" summary="ю">
+      <option name="closed" value="true" />
+      <created>1759863716954</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759863716954</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ю" />
+    <option name="LAST_COMMIT_MESSAGE" value="ю" />
+  </component>
+</project>

@@ -2,29 +2,33 @@
 <html lang="uk">
 <head>
     <meta charset="utf-8" />
-    <title>Barcelona ❤️</title>
-    <link rel="stylesheet" href="./css/style.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Резюме Noel Taylor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.min.css" />
 </head>
 <body>
-
-<main class="container">
-    <section class="hero">
-        <h1>Barcelona</h1>
-        <p class="lead">Реал Мадрид понос 😎</p>
-    </section>
-
-    <section class="card">
-        <img class="cardimg" src="./img/barca.png" alt="Barcelona">
-        <div class="cardbody">
-            <h2 class="cardtitle">Barcelona</h2>
-            <p class="cardtext">
-                Найкращий клуб в світі. Мессі – найкращий!
-            </p>
-        </div>
-    </section>
-</main>
-
-
-<script src="./js/bundle.min.js"></script>
+@@include('_header.html')
+<div class="resume container-lg pb-5">
+    <div class="row g-4">
+        <aside class="col-lg-4" aria-label="Бокова панель резюме">
+            @@include('_sidebar.html')
+        </aside>
+        <main class="col-lg-8" id="main-content">
+            @@include('_main-content.html')
+        </main>
+    </div>
+</div>
+<footer class="resume-footer py-4 border-top">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
+        <p class="mb-0">&copy; <span id="current-year"></span> Noel Taylor. Всі права захищені.</p>
+        <p class="mb-0 text-body-secondary">Оновлено спеціально для лабораторних робіт 2–3.</p>
+    </div>
+</footer>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/resume.min.js"></script>
 </body>
 </html>

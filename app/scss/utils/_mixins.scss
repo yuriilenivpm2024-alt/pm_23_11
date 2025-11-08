@@ -1,0 +1,23 @@
+@mixin card-surface {
+  background-color: $color-surface;
+  border-radius: $radius-lg;
+  box-shadow: 0 24px 60px $color-shadow;
+}
+
+@mixin section-title {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+@mixin badge($bg, $color: inherit) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background-color: $bg;
+  color: $color;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
