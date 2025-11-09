@@ -1,9 +1,62 @@
+.resume-card__sidebar {
+  position: relative;
+}
+
 .resume-panel {
-  @include card-surface;
-  padding: clamp(1.5rem, 2vw, 2.25rem);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  width: 100%;
+  flex: 1;
+}
+
+.resume-panel__profile {
+  text-align: center;
+  display: grid;
+  gap: 0.65rem;
+  justify-items: center;
+}
+
+.resume-panel__avatar {
+  width: clamp(148px, 26vw, 180px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 0.55rem;
+  background: linear-gradient(140deg, rgba(69, 89, 255, 0.18), rgba(255, 146, 47, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 48px rgba(7, 9, 20, 0.4);
+}
+
+.resume-panel__avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #0f1220;
+}
+
+.resume-panel__name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-panel__role {
+  margin: 0;
+  color: rgba(248, 249, 255, 0.7);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.resume-panel__title {
+  @include section-title;
+  font-size: 1.1rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .resume-panel__block {
@@ -11,33 +64,44 @@
   gap: 0.75rem;
 }
 
-.resume-panel__title {
-  @include section-title;
-  font-size: 1.1rem;
-}
-
 .resume-panel__list {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
+}
 
-  div {
-    display: grid;
-    gap: 0.2rem;
-  }
+.resume-panel__list div {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
 
-  dt {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: $color-muted;
-    letter-spacing: 0.08em;
-  }
+.resume-panel__list dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(248, 249, 255, 0.6);
+  letter-spacing: 0.16em;
+}
 
-  dd {
-    margin: 0;
-    font-weight: 600;
-  }
+.resume-panel__list dd {
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+}
+
+.resume-panel__list a {
+  color: inherit;
+  text-decoration: none;
+  transition: color $transition;
+}
+
+.resume-panel__list a:hover,
+.resume-panel__list a:focus-visible {
+  color: #ffb259;
 }
 
 .resume-panel__timeline {
@@ -45,7 +109,12 @@
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.9rem;
+  gap: 1.1rem;
+}
+
+.resume-panel__timeline li {
+  border-left: 2px solid rgba(255, 255, 255, 0.08);
+  padding-left: 1rem;
 }
 
 .resume-panel__timeline-title {
@@ -54,14 +123,20 @@
 }
 
 .resume-panel__timeline-meta {
-  margin: 0.15rem 0 0;
-  color: $color-muted;
+  margin: 0.2rem 0 0;
+  color: rgba(248, 249, 255, 0.65);
   font-size: 0.95rem;
 }
 
 .resume-panel__link {
   font-weight: 600;
-  color: $color-primary;
+  color: #ffb259;
+  transition: color $transition;
+}
+
+.resume-panel__link:hover,
+.resume-panel__link:focus-visible {
+  color: #ffd28c;
 }
 
 .resume-panel__tags {
@@ -71,19 +146,37 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
 
-  .badge {
-    @include badge($color-tag-bg, $color-primary);
-  }
+.resume-panel__tags .badge {
+  @include badge(rgba(255, 255, 255, 0.12), #fff);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(2px);
+}
 
-  .text-bg-light {
-    @include badge(#fff, $color-body);
-    border: 1px solid $color-border;
+.resume-panel__tags .badge.text-bg-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.resume-panel__tags .text-bg-light {
+  @include badge(#fff, $color-body);
+  border: none;
+}
+
+@media (max-width: 1199.98px) {
+  .resume-card__sidebar,
+  .resume-card__main {
+    padding: clamp(2rem, 6vw, 2.75rem);
   }
 }
 
-@media (max-width: 991.98px) {
-  .resume-panel {
-    position: static;
+@media (max-width: 767.98px) {
+  .resume-card__sidebar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .resume-panel__profile {
+    gap: 0.75rem;
   }
 }

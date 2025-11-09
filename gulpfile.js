@@ -1,6 +1,10 @@
 const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const autoprefixer = require('gulp-autoprefixer');
+
+// ⬇️ FIX: коректно отримуємо функцію з gulp-autoprefixer
+const _autoprefixer = require('gulp-autoprefixer');
+const autoprefixer = _autoprefixer.default || _autoprefixer;
+
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
@@ -105,7 +109,9 @@ function scripts() {
 }
 
 function images() {
-    return src(paths.img.src).pipe(gulpIf(isProd, imagemin())).pipe(dest(paths.img.dest));
+    return src(paths.img.src)
+        .pipe(gulpIf(isProd, imagemin()))
+        .pipe(dest(paths.img.dest));
 }
 
 function bootstrapCss() {
