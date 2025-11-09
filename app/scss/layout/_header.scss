@@ -4,43 +4,51 @@
   background: linear-gradient(135deg, #f6f7fb 0%, #f1f3ff 55%);
   padding: clamp(3rem, 6vw, 4rem) clamp(3rem, 6vw, 4.5rem);
   border-bottom: 1px solid rgba(24, 32, 56, 0.08);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+                    circle at 85% 10%,
+                    rgba(255, 166, 43, 0.22),
+                    transparent 45%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
 }
 
-.resume-header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 85% 10%, rgba(255, 166, 43, 0.22), transparent 45%);
-  pointer-events: none;
-  z-index: -1;
-}
-
+/* === основна сітка (поміняно порядок колонок) === */
 .resume-header__layout {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(2rem, 5vw, 4rem);
+  direction: rtl; // 👉 міняє місцями ліву і праву колонку
 }
 
-.resume-header__summary {
-  display: grid;
-  gap: 0.75rem;
+/* повертаємо нормальний напрямок тексту */
+.resume-header__summary,
+.resume-header__about {
+  direction: ltr;
 }
 
+/* === ліва колонка: “About” === */
 .resume-header__about {
   position: relative;
   padding-left: clamp(1.75rem, 3vw, 2.5rem);
-}
 
-.resume-header__about::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.35rem;
-  width: clamp(42px, 8vw, 60px);
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #4559ff 0%, #ff932f 100%);
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: clamp(42px, 8vw, 60px);
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #4559ff 0%, #ff932f 100%);
+  }
 }
 
 .resume-header__eyebrow {
@@ -49,12 +57,28 @@
   font-weight: 700;
   font-size: 0.75rem;
   color: $color-primary;
+  text-transform: uppercase;
 }
 
 .resume-header__about-text {
-  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
-  color: $color-muted;
-  line-height: 1.8;
+  font-size: 0.95rem;          /* трохи менший шрифт */
+  line-height: 1.65;           /* ближчі рядки */
+  color: #333;                 /* темний, як на прикладі */
+  max-width: 45ch;             /* звужує блок — текст тепер у 6 рядків */
+  margin-top: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+
+
+/* === права колонка: ім’я та професія === */
+.resume-header__summary {
+  display: grid;
+  gap: 0.75rem;
 }
 
 .resume-header__title {
@@ -80,10 +104,12 @@
   line-height: 1.8;
 }
 
+/* === адаптивність === */
 @media (max-width: 991.98px) {
   .resume-header__layout {
     grid-template-columns: 1fr;
     align-items: start;
+    direction: ltr; // 👉 повертаємо звичайний порядок на мобільних
   }
 
   .resume-header__about {
@@ -105,4 +131,56 @@
   .resume-header__title {
     letter-spacing: 0.08em;
   }
+}
+
+/* === новий бейдж: коло + заголовок праворуч === */
+.resume-header__about {
+  padding-left: 0;
+}
+.resume-header__about::before {
+  display: none;
+}
+
+.about-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 1rem;
+}
+.about-badge__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 44px;
+  block-size: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+  background: #2a2a2a;
+
+  i {
+    font-size: 24px;
+    color: #fff;
+    line-height: 1;
+  }
+}
+
+
+
+
+/* напис ABOUT ME — без змін */
+.about-badge__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: #2a2a2a;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* адаптив */
+@media (max-width: 575.98px) {
+  .about-badge__circle { inline-size: 38px; block-size: 38px; }
+  .about-badge__title { font-size: 20px; letter-spacing: 0.05em; }
 }
