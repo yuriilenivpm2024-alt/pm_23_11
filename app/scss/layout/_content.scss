@@ -125,3 +125,53 @@
   color: #444;
   line-height: 1.5;
 }
+
+.skills-title{
+  font-weight:700;
+  text-transform:uppercase;
+  display:flex; align-items:center; gap:.5rem;
+  margin:0 0 1rem;
+}
+
+.skills-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;      /* дві колонки як на макеті */
+  gap: 1rem 3rem;                       /* вертикальний/горизонтальний відступи */
+  max-width: 720px;
+}
+
+.skill{
+  display:grid;
+  grid-template-columns: 1fr 140px;     /* лейбл + вузький прогрес-бар */
+  align-items:center;
+  gap: .75rem;
+}
+
+.skill-label{
+  color:#333;
+}
+
+.skill-bar{
+  height:12px;
+  border:2px solid #333;                /* тонка темна обводка як на зразку */
+  border-radius:999px;
+  padding:2px;                          /* щоб “заливка” не прилипала до рамки */
+  background:transparent;
+  position:relative;
+  overflow:hidden;
+}
+
+.skill-fill{
+  display:block;
+  height:100%;
+  border-radius:999px;
+  background:#333;                      /* колір заповнення */
+  width:0;                              /* керується inline-стилем width:% */
+}
+
+/* Адаптив: на вузьких екранах робимо одну колонку */
+@media (max-width:640px){
+  .skills-grid{ grid-template-columns: 1fr; }
+  .skill{ grid-template-columns: 1fr; }
+}
+

@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b3e2c8ab-2b6d-4f44-8985-ff11e9f77b30" name="Changes" comment="ю">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/html/_main-content.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/html/_main-content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/layout/_content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/layout/_content.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/layout/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/layout/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/html/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/html/_sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scss/layout/_sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/layout/_sidebar.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +99,7 @@
       <workItem from="1762683958805" duration="19166000" />
       <workItem from="1762718316354" duration="1126000" />
       <workItem from="1762780758285" duration="2037000" />
-      <workItem from="1762804545623" duration="4608000" />
+      <workItem from="1762804545623" duration="7436000" />
     </task>
     <task id="LOCAL-00001" summary="ю">
       <option name="closed" value="true" />

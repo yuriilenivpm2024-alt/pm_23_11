@@ -74,10 +74,10 @@
 .resume-panel__list div {
   display: grid;
   gap: 0.3rem;
-  padding: 0.6rem 0.75rem;
-  border-radius: $radius-md;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border: 0;
 }
 
 .resume-panel__list dt {
@@ -113,8 +113,8 @@
 }
 
 .resume-panel__timeline li {
-  border-left: 2px solid rgba(255, 255, 255, 0.08);
-  padding-left: 1rem;
+  padding-left: 0;
+
 }
 
 .resume-panel__timeline-title {
@@ -180,3 +180,4 @@
     gap: 0.75rem;
   }
 }
+

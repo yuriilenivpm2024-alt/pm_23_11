@@ -51,24 +51,48 @@
         </div>
     </section>
 
-    <section class="resume-section" aria-labelledby="skills-heading">
-        <div class="resume-section__header">
-            <h2 id="skills-heading">Key Skills</h2>
-            <p class="resume-section__hint">Use the toggles to switch between soft and technical skills.</p>
+    <section class="skills">
+        <h2 class="skills-title"><span class="icon">📊</span> Skills</h2>
+
+        <div class="skills-grid">
+            <!-- Ліва колонка -->
+            <div class="skill">
+                <span class="skill-label">Adobe Photoshop</span>
+                <div class="skill-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                    <span class="skill-fill" style="width:70%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span class="skill-label">Microsoft Word</span>
+                <div class="skill-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55">
+                    <span class="skill-fill" style="width:55%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span class="skill-label">HTML-5 / CSS-3</span>
+                <div class="skill-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                    <span class="skill-fill" style="width:80%"></span>
+                </div>
+            </div>
+
+            <!-- Права колонка -->
+            <div class="skill">
+                <span class="skill-label">Adobe Illustrator</span>
+                <div class="skill-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                    <span class="skill-fill" style="width:85%"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span class="skill-label">Microsoft PowerPoint</span>
+                <div class="skill-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+                    <span class="skill-fill" style="width:75%"></span>
+                </div>
+            </div>
         </div>
-        <div class="skills-switcher" role="group" aria-label="Skill filter">
-            <button class="skills-switcher__btn is-active" type="button" data-skill-filter="all">All</button>
-            <button class="skills-switcher__btn" type="button" data-skill-filter="hard">Hard Skills</button>
-            <button class="skills-switcher__btn" type="button" data-skill-filter="soft">Soft Skills</button>
-        </div>
-        <ul class="skills-list">
-            <li class="skills-list__item" data-skill-type="hard">Figma, Sketch, Adobe XD</li>
-            <li class="skills-list__item" data-skill-type="hard">Design systems &amp; component libraries</li>
-            <li class="skills-list__item" data-skill-type="hard">HTML, SCSS, Bootstrap 5</li>
-            <li class="skills-list__item" data-skill-type="soft">Facilitating design workshops</li>
-            <li class="skills-list__item" data-skill-type="soft">Client and team communication</li>
-            <li class="skills-list__item" data-skill-type="soft">Mentoring and onboarding designers</li>
-        </ul>
     </section>
+
 
     <section class="resume-section" aria-labelledby="awards-heading">
