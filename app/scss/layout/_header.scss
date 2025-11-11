@@ -1,7 +1,7 @@
 .resume-header {
   position: relative;
   z-index: 1;
-  background: linear-gradient(135deg, #f6f7fb 0%, #f1f3ff 55%);
+  background: #e0e0e0; /* ✅ заміна градієнта */
   padding: clamp(3rem, 6vw, 4rem) clamp(3rem, 6vw, 4.5rem);
   border-bottom: 1px solid rgba(24, 32, 56, 0.08);
 
@@ -9,15 +9,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-                    circle at 85% 10%,
-                    rgba(255, 166, 43, 0.22),
-                    transparent 45%
-    );
+    background: none; /* ✅ вимкнуто radial-gradient */
     pointer-events: none;
     z-index: -1;
   }
 }
+
 
 /* === основна сітка (поміняно порядок колонок) === */
 .resume-header__layout {
