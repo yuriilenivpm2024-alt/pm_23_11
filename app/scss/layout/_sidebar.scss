@@ -1,8 +1,23 @@
 .resume-card__sidebar {
-  background: #333333 !important;
-  color: #f8f9ff;
+  background: transparent !important;
+  background-image: none !important;
+  color: inherit;
   position: relative;
   display: flex;
+  padding: 0; /* відступи дамо інсету */
+}
+
+/* внутрішня “картка” сайдбара, відсунута від країв */
+.sidebar-inset {
+  background: #333333;               /* темний фон, як просив */
+  color: #f8f9ff;
+  border-radius: 24px 0 24px 24px;   /* округлення як у макеті праворуч зверху */
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  margin-right: clamp(14px, 2vw, 28px);  /* БІЛА СМУЖКА праворуч */
+  margin-left: clamp(14px, 2vw, 28px);   /* баланс зліва (можеш зменшити) */
+  width: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 
