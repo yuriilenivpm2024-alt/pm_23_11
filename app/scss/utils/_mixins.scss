@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @mixin card-surface {
   background-color: $color-surface;
   border-radius: $radius-lg;

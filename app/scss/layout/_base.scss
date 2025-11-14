@@ -1,3 +1,5 @@
+@use "../utils" as *;
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -42,6 +44,7 @@ img {
   box-shadow: 0 40px 80px rgba(15, 23, 42, 0.18);
   overflow: hidden;
   position: relative;
+  max-width: 1100px;
 }
 
 .resume-card::before {
@@ -60,6 +63,10 @@ img {
   z-index: 1;
   --bs-gutter-x: 0;
   --bs-gutter-y: 0;
+
+  // ДОДАНО: керуємо розкладкою двох колонок
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .resume-card__sidebar,
@@ -72,14 +79,38 @@ img {
   color: #f8f9ff;
   position: relative;
   display: flex;
+
+  // ДОДАНО: sidebar ширший
+  flex: 0 0 36%;
+  max-width: 42%;
 }
 
 .resume-card__main {
   background-color: $color-surface;
-  border-left: 1px solid rgba(24, 32, 56, 0.08);
+
+  .resume-card__main {
+    padding-left: 1rem; // керуємо відстанню
+    border-left: none; // якщо хочеш без лінії
+  }
+
+
+  // ДОДАНО: основний контент вужчий
+  flex: 0 0 59%;
+  max-width: 65%;
 }
 
+// АДАПТИВ: на екранах до 992px — одна колонка під одною
 @media (max-width: 991.98px) {
+  .resume-card__body {
+    flex-direction: column;
+  }
+
+  .resume-card__sidebar,
+  .resume-card__main {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
   .resume-card__main {
     border-left: none;
   }
@@ -123,24 +154,24 @@ img {
   gap: 0.25rem;
 }
 
-  .skills-switcher__btn {
-    border: none;
-    background: transparent;
-    padding: 0.45rem 1.05rem;
-    border-radius: 999px;
-    font-weight: 600;
-    color: $color-muted;
-    cursor: pointer;
-    transition: background-color $transition, color $transition, box-shadow $transition;
+.skills-switcher__btn {
+  border: none;
+  background: transparent;
+  padding: 0.45rem 1.05rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: $color-muted;
+  cursor: pointer;
+  transition: background-color $transition, color $transition, box-shadow $transition;
 
-    &.is-active {
-      background-color: $color-primary;
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(69, 89, 255, 0.35);
-    }
-
-    &:focus-visible {
-      outline: 2px solid rgba(69, 89, 255, 0.5);
-      outline-offset: 2px;
-    }
+  &.is-active {
+    background-color: $color-primary;
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(69, 89, 255, 0.35);
   }
+
+  &:focus-visible {
+    outline: 2px solid rgba(69, 89, 255, 0.5);
+    outline-offset: 2px;
+  }
+}

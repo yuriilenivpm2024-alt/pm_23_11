@@ -1,8 +1,14 @@
+@use "../utils" as *;
+
 .resume-header {
   position: relative;
   z-index: 1;
   background: #e0e0e0; /* ✅ заміна градієнта */
-  padding: clamp(3rem, 6vw, 4rem) clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(3rem, 6vw, 4rem);
+  padding-bottom: clamp(6rem, 8vw, 6rem);  // 👉 нижній відступ
+  padding-left: clamp(3rem, 6vw, 4.5rem);
+  padding-right: clamp(3rem, 6vw, 4.5rem);
+
   border-bottom: 1px solid rgba(24, 32, 56, 0.08);
 
   &::after {
@@ -59,7 +65,7 @@
 
 .resume-header__about-text {
   font-size: 0.95rem;          /* трохи менший шрифт */
-  line-height: 1.65;           /* ближчі рядки */
+  line-height: 1.7;           /* ближчі рядки */
   color: #333;                 /* темний, як на прикладі */
   max-width: 65ch;             /* звужує блок — текст тепер у 6 рядків */
   margin-top: 1rem;
@@ -75,15 +81,18 @@
 /* === права колонка: ім’я та професія === */
 .resume-header__summary {
   display: grid;
+  margin-left: 2rem;
+  align-self: start;
   gap: 0.1rem;
 }
 
 .resume-header__title {
-  margin: 0.05rem 0 0 ;
-  font-size: clamp(3rem, 6vw, 3.8rem);
+  margin:  0 ;
+  font-size: clamp(2.4rem, 5vw, 3rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .resume-header__subtitle {

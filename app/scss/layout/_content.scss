@@ -1,3 +1,5 @@
+@use "../utils" as *;
+
 .experience-list {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2rem);
