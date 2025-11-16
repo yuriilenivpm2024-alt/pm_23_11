@@ -32,9 +32,10 @@ const js_task = () => {
 
 // === Images ===
 const img_task = () => {
-    return src('app/img/*')
+    return src('app/img/*.{jpg,jpeg,png,svg,gif,ico,webp}',{encoding:false})
         .pipe(imagemin())
-        .pipe(dest('dist/img'));
+        .pipe(dest('dist/img'))
+        .pipe(browserSync.stream());
 };
 
 // === Bootstrap CSS ===

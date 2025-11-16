@@ -13,7 +13,7 @@
 .sidebar-inset {
   background: #333333;               /* темний фон, як просив */
   color: #f8f9ff;
-  border-radius: 24px 0 24px 24px;   /* округлення як у макеті праворуч зверху */
+
   padding: clamp(2rem, 3.5vw, 2.75rem);
   margin-right: clamp(14px, 2vw, 28px);  /* БІЛА СМУЖКА праворуч */
   margin-left: clamp(14px, 2vw, 28px);   /* баланс зліва (можеш зменшити) */
@@ -29,31 +29,47 @@
   gap: clamp(1.75rem, 3vw, 2.5rem);
   width: 100%;
   flex: 1;
+
+  position: relative;                         // НОВЕ
+  padding-top: clamp(13rem, 11vw, 13rem);       // місце зверху під аватар
 }
 
 .resume-panel__profile {
-  text-align: center;
-  display: grid;
+  position: absolute;                        // було grid, тепер абсолют
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -66%);          // половина кола над панеллю, половина в ній
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.65rem;
-  justify-items: center;
+  z-index: 2;                                // щоб було поверх хедера/фону
+  text-align: center;
 }
 
 .resume-panel__avatar {
-  width: clamp(148px, 26vw, 180px);
+  position: relative;
+  width: 290px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  padding: 0.55rem;
-  background: linear-gradient(140deg, rgba(69, 89, 255, 0.18), rgba(255, 146, 47, 0.12));
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 24px 48px rgba(7, 9, 20, 0.4);
+  overflow: hidden;
+
+  /* забираємо старі стилі, які ламали обводки */
+  padding: 0;
+  border: none;
+  background: none;
+
+  /* ТУТ ОБВОДКИ */
+  box-shadow:
+          0 0 0 8px #333333,   /* темна обводка */
+          0 0 0 21px #ffffff;   /* біла (вдвічі товща) */
 }
 
 .resume-panel__avatar img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
-  background-color: #0f1220;
+  border-radius: 50%;
 }
 
 .resume-panel__name {
@@ -73,12 +89,53 @@
 }
 
 .resume-panel__title {
-  @include section-title;
-  font-size: 1.1rem;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  font-size: 1.35rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin: 0 0 0.75rem;
 }
+
+/* Заголовок "CONTACT ME" з іконкою в кружечку */
+.panel-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+/* білий круг з іконкою */
+.panel-badge__circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+}
+
+.panel-badge__circle i {
+  font-size: 22px;
+  color: #333333;
+}
+
+/* текст CONTACT ME */
+.panel-badge__title {
+  margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+
 
 .resume-panel__block {
   display: grid;

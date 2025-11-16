@@ -1,165 +1,60 @@
 @use "../utils" as *;
 
+// ──────────────── HEADER ────────────────
+
 .resume-header {
   position: relative;
   z-index: 1;
-  background: #e0e0e0; /* ✅ заміна градієнта */
-  padding-top: clamp(3rem, 6vw, 4rem);
-  padding-bottom: clamp(6rem, 8vw, 6rem);  // 👉 нижній відступ
-  padding-left: clamp(3rem, 6vw, 4.5rem);
-  padding-right: clamp(3rem, 6vw, 4.5rem);
-
+  background: #e0e0e0;
+  /* невисокий хедер */
+  padding: 2.7rem 3.5rem 4rem;
   border-bottom: 1px solid rgba(24, 32, 56, 0.08);
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: none; /* ✅ вимкнуто radial-gradient */
-    pointer-events: none;
-    z-index: -1;
-  }
 }
 
-
-/* === основна сітка (поміняно порядок колонок) === */
 .resume-header__layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
-  direction: rtl; // 👉 міняє місцями ліву і праву колонку
-}
-
-/* повертаємо нормальний напрямок тексту */
-.resume-header__summary,
-.resume-header__about {
-  direction: ltr;
-}
-
-/* === ліва колонка: “About” === */
-.resume-header__about {
-  position: relative;
-  padding-left: clamp(1.75rem, 3vw, 2.5rem);
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.35rem;
-    width: clamp(42px, 8vw, 60px);
-    height: 4px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #4559ff 0%, #ff932f 100%);
-  }
-}
-
-.resume-header__eyebrow {
-  margin: 0;
-  letter-spacing: 0.3em;
-  font-weight: 700;
-  font-size: 0.75rem;
-  color: $color-primary;
-  text-transform: uppercase;
-}
-
-.resume-header__about-text {
-  font-size: 0.95rem;          /* трохи менший шрифт */
-  line-height: 1.7;           /* ближчі рядки */
-  color: #333;                 /* темний, як на прикладі */
-  max-width: 65ch;             /* звужує блок — текст тепер у 6 рядків */
-  margin-top: 1rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  text-shadow: none;
-  font-family: "Poppins", Arial, sans-serif;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
 }
 
 
-
-/* === права колонка: ім’я та професія === */
+/* ІМ’Я СПРАВА */
 .resume-header__summary {
+  grid-column: 2;
+  grid-row: 1;  // ← ось це важливо
   display: grid;
-  margin-left: 2rem;
-  align-self: start;
-  gap: 0.1rem;
+  gap: 0.35rem;
+  align-content: start;
+  margin-left: 4rem;
+  margin-top: 0.8rem;
 }
 
-.resume-header__title {
-  margin:  0 ;
-  font-size: clamp(2.4rem, 5vw, 3rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.resume-header__subtitle {
-  margin: 0.05rem 0 1.5rem;
-  color: $color-primary;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.resume-header__description {
-  margin: 0;
-  color: $color-muted;
-  max-width: 48ch;
-  line-height: 1.8;
-}
-
-/* === адаптивність === */
-@media (max-width: 991.98px) {
-  .resume-header__layout {
-    grid-template-columns: 1fr;
-    align-items: start;
-    direction: ltr; // 👉 повертаємо звичайний порядок на мобільних
-  }
-
-  .resume-header__about {
-    padding-left: 0;
-  }
-
-  .resume-header__about::before {
-    position: static;
-    display: inline-block;
-    margin-bottom: 0.75rem;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .resume-header {
-    padding: clamp(2.5rem, 8vw, 3rem) clamp(1.75rem, 6vw, 2.25rem);
-  }
-
-  .resume-header__title {
-    letter-spacing: 0.08em;
-  }
-}
-
-/* === новий бейдж: коло + заголовок праворуч === */
 .resume-header__about {
-  padding-left: 0;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  grid-column: 1;
+  grid-row: 1;  // ← і тут теж
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
 }
-.resume-header__about::before {
-  display: none;
-}
+
+
+// ──────────────── ABOUT BADGE ────────────────
 
 .about-badge {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 1rem;
+  gap: 0.9rem;
 }
+
 .about-badge__circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   inline-size: 44px;
   block-size: 44px;
-  flex: 0 0 44px;
   border-radius: 50%;
   background: #2a2a2a;
 
@@ -170,23 +65,89 @@
   }
 }
 
-
-
-
-/* напис ABOUT ME — без змін */
 .about-badge__title {
   margin: 0;
+  font-size: 2rem;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 1.2;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
   color: #2a2a2a;
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* адаптив */
+// ──────────────── ТЕКСТИ ────────────────
+
+.resume-header__about-text {
+  margin: 0;
+  max-width: 30rem;   // щоб текст не розтягувався занадто широко
+  font-size: 1rem;
+  line-height: 1.6;
+
+  color: #555;
+  text-align: justify;
+}
+
+.resume-header__title {
+  margin-left: -0.5rem;
+  font-size: 2.6rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  -webkit-text-stroke: 0.5px #222;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  color: #333333;
+}
+
+.resume-header__title strong {
+  font-weight: 900;
+}
+
+.resume-header__subtitle {
+  text-indent: 2rem;
+  margin-top: 0.25rem;
+  color: #333333;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+// ──────────────── ADAPTIVE ────────────────
+
+@media (max-width: 991.98px) {
+  .resume-header {
+    padding: 1.75rem 2rem 2.25rem;
+  }
+
+  .resume-header__layout {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .resume-header__summary,
+  .resume-header__about {
+    grid-column: auto;
+  }
+
+  /* спочатку ім’я, потім about me – можна поміняти місцями при потребі */
+}
+
 @media (max-width: 575.98px) {
-  .about-badge__circle { inline-size: 38px; block-size: 38px; }
-  .about-badge__title { font-size: 20px; letter-spacing: 0.05em; }
+  .resume-header {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .about-badge__circle {
+    inline-size: 38px;
+    block-size: 38px;
+  }
+
+  .about-badge__title {
+    font-size: 1.6rem;
+  }
+
+  .resume-header__title {
+    font-size: 2.3rem;
+  }
 }
