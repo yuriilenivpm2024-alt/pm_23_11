@@ -120,19 +120,20 @@
 }
 
 .panel-badge__circle i {
-  font-size: 22px;
+  font-size: 27px;
   color: #333333;
 }
 
 /* текст CONTACT ME */
 .panel-badge__title {
   margin: 0;
-  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.70rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 
@@ -236,6 +237,8 @@
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
+
+
 
 .resume-panel__tags .text-bg-light {
   @include badge(#fff, $color-body);

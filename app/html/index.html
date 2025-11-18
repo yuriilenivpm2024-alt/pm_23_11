@@ -15,6 +15,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="resume-page py-4">
@@ -23,13 +24,15 @@
             @@include('_header.html')
 
             <div class="resume-card__body row g-0 justify-content-center">
-                <aside class="resume-card__sidebar col-12 col-lg-4" aria-label="Resume sidebar">
-                    @@include('_sidebar.html')
-                </aside>
+
 
                 <main class="resume-card__main col-12 col-lg-8" id="main-content">
                     @@include('_main-content.html')
                 </main>
+
+                <aside class="resume-card__sidebar col-12 col-lg-4" aria-label="Resume sidebar">
+                    @@include('_sidebar.html')
+                </aside>
             </div>
 
         </div>

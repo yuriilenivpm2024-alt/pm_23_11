@@ -5,11 +5,16 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
+const fileInclude = require('gulp-file-include');
 const browserSync = require('browser-sync').create();
 
 // === HTML ===
 const html_task = () => {
-    return src('app/**/*.html')
+    return src('app/html/*.html')
+        .pipe(fileInclude({
+            prefix: '@@',
+            basepath: '@file',
+        }))
         .pipe(dest('dist'));
 };
 
@@ -32,10 +37,9 @@ const js_task = () => {
 
 // === Images ===
 const img_task = () => {
-    return src('app/img/*.{jpg,jpeg,png,svg,gif,ico,webp}',{encoding:false})
+    return src('app/img/*.{jpg,jpeg,png,svg,gif,ico,webp}', { encoding: false })
         .pipe(imagemin())
-        .pipe(dest('dist/img'))
-        .pipe(browserSync.stream());
+        .pipe(dest('dist/img'));
 };
 
 // === Bootstrap CSS ===
@@ -50,7 +54,13 @@ const bootstrapJS = () => {
         .pipe(dest('dist/js'));
 };
 
-// === BrowserSync (separate task) ===
+// === Reload ===
+const reload = (done) => {
+    browserSync.reload();
+    done();
+};
+
+// === BrowserSync ===
 const browserSync_task = (done) => {
     browserSync.init({
         server: {
@@ -62,23 +72,16 @@ const browserSync_task = (done) => {
     done();
 };
 
-// === Watch task ===
+// === Watch ===
 const watch_task = () => {
-    watch('app/**/*.html', series(html_task, reload));
+    watch('app/html/**/*.html', series(html_task, reload));
     watch('app/scss/**/*.scss', series(scss_task, reload));
     watch('app/js/**/*.js', series(js_task, reload));
     watch('app/img/*', series(img_task, reload));
 };
 
-// === Reload helper ===
-const reload = (done) => {
-    browserSync.reload();
-    done();
-};
+// === Build & Default ===
+const build = parallel(html_task, scss_task, js_task, img_task, bootstrapCSS, bootstrapJS);
 
-// === Default task ===
-exports.default = series(
-    parallel(html_task, scss_task, js_task, img_task, bootstrapCSS, bootstrapJS),
-    browserSync_task,
-    watch_task
-);
+exports.build = build;
+exports.default = series(build, browserSync_task, watch_task);

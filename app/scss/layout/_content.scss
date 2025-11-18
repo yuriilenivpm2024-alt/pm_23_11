@@ -206,12 +206,13 @@
 }
 
 .extra-list {
-  list-style: disc;
-  margin: 0;
-  padding-left: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.25rem 1.5rem;
+
+    list-style: disc;
+    margin: 0;
+    padding-left: 1.5rem;
+    display: block;   /* ← видаляємо грід */
+
+
 
   li {
     color: #333;
@@ -230,3 +231,80 @@
   .skill{ grid-template-columns: 1fr; }
 }
 
+
+.skills-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.skills-heading__icon {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #333;   // темне коло
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;              // біла іконка
+  font-size: 1.2rem;
+}
+
+.skills-heading__title {
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.95rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* відстань між іконкою і текстом */
+  margin-bottom: 20px;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #333; /* темний круг */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-circle i {
+  color: white;
+  font-size: 18px; /* розмір іконки */
+}
+
+.section-title h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.resume-section {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.extra-list--language {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 колонки */
+  gap: 0.5rem 2rem;               /* відступи між рядками і колонками */
+  padding-left: 1.2rem;
+}
+
+.extra-list--language li {
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
