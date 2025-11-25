@@ -28,7 +28,7 @@
   line-height: 1.7;
 }
 .experience-item {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .experience-header {
@@ -39,7 +39,7 @@
 
 .experience-title {
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   font-size: 1.2rem;
 }
@@ -52,7 +52,8 @@
 .experience-company {
   margin: 0.3rem 0 1rem;
   font-style: italic;
-  color: #555;
+  color: #333333;
+  font-weight: 600;
 }
 
 .experience-description {
@@ -61,7 +62,7 @@
   line-height: 1.5;
 }
 .experience-item2 {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .experience-header2 {
@@ -72,7 +73,7 @@
 
 .experience-title2 {
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   font-size: 1.2rem;
 }
@@ -85,7 +86,8 @@
 .experience-company2 {
   margin: 0.3rem 0 1rem;
   font-style: italic;
-  color: #555;
+  color: #333333;
+  font-weight: 600;
 }
 
 .experience-description2 {
@@ -95,7 +97,7 @@
 }
 
 .experience-item3 {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .experience-header3 {
@@ -106,7 +108,7 @@
 
 .experience-title3 {
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   font-size: 1.2rem;
 }
@@ -119,7 +121,8 @@
 .experience-company3 {
   margin: 0.3rem 0 1rem;
   font-style: italic;
-  color: #555;
+  color: #333333;
+  font-weight: 600;
 }
 
 .experience-description3 {
@@ -139,17 +142,21 @@
   display:grid;
   grid-template-columns: 1fr 1fr;      /* дві колонки як на макеті */
   gap: 1rem 3rem;                       /* вертикальний/горизонтальний відступи */
-  max-width: 720px;
+  max-width: 570px;
+  padding-bottom: 2rem;
 }
 
 .skill{
   display:grid;
-  grid-template-columns: 1fr 140px;     /* лейбл + вузький прогрес-бар */
+  grid-template-columns: 1fr 110px;     /* лейбл + вузький прогрес-бар */
   align-items:center;
   gap: .75rem;
+
 }
 
 .skill-label{
+  white-space: nowrap;
+  font-weight: 700;
   color:#333;
 }
 
@@ -216,7 +223,9 @@
 
   li {
     color: #333;
-    font-weight: 500;
+    font-weight: 700;   // жирніше
+    font-size: 1.2rem;  // більше
+    line-height: 1.6;
   }
 
   @media (max-width: 640px) {
@@ -294,6 +303,8 @@
 .resume-section {
   margin-left: 0 !important;
   padding-left: 0 !important;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .extra-list--language {

@@ -49,7 +49,7 @@
 
 .resume-panel__avatar {
   position: relative;
-  width: 290px;
+  width: 350px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
@@ -127,7 +127,7 @@
 /* текст CONTACT ME */
 .panel-badge__title {
   margin: 0;
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: $font-base;
   font-size: 1.70rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -188,24 +188,44 @@
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 1.1rem;
+  gap: 1.4rem;  // трохи більше повітря між записами
 }
 
 .resume-panel__timeline li {
   padding-left: 0;
-
 }
 
+/* НАЗВА УНІВЕРСИТЕТУ */
 .resume-panel__timeline-title {
   margin: 0;
-  font-weight: 600;
+  font-family: $font-base;
+  font-size: 1.15rem;        // більше, як у макеті
+  font-weight: 800;          // дуже жирний
+  text-transform: uppercase; // ВСІ БУКВИ ВЕЛИКІ
+  letter-spacing: 0.06em;    // трохи розтягнути
+  color: #ffffff;
 }
 
+/* РЯДОК З STEПЕНЕМ */
 .resume-panel__timeline-meta {
   margin: 0.2rem 0 0;
-  color: rgba(248, 249, 255, 0.65);
-  font-size: 0.95rem;
+  font-family: $font-base;
+  font-size: 0.95rem;        // трохи більший
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(248, 249, 255, 0.8);
 }
+
+/* ДАТИ (якщо в HTML є .resume-panel__timeline-meta2) */
+.resume-panel__timeline-meta2 {
+  margin: 0.25rem 0 0;
+  font-family: $font-base;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: none;      // як у твоєму прикладі
+  color: #ffffff;
+}
+
 
 .resume-panel__link {
   font-weight: 600;
