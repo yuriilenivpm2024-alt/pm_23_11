@@ -1,5 +1,40 @@
 @use "../utils" as *;
 
+// ───────────── БАЗОВІ ЗМІННІ ДЛЯ МАТЕМАТИКИ ─────────────
+$space-base: 1rem;
+$space-sm: $space-base * 0.75;
+$space-lg: $space-base * 1.75;
+$space-xl: $space-base * 2;
+$space-xxl: $space-base * 2.75;
+
+$sidebar-inset-padding-min: $space-xl;                 // 2rem
+$sidebar-inset-padding-max: $space-xxl;                // 2.75rem
+
+$sidebar-inset-margin-min: 14px;
+$sidebar-inset-margin-max: $sidebar-inset-margin-min * 2; // 28px
+
+$profile-gap: $space-base * 0.65;
+$panel-gap: $space-base * 1.75;
+
+$avatar-size: 350px;
+$avatar-border-inner: 8px;
+$avatar-border-outer: $avatar-border-inner * 2.625;      // 21px
+
+$badge-circle-size: 42px;
+$badge-icon-size: $badge-circle-size * 0.64;             // ~27px
+
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.75;                   // 0.75rem
+$font-size-xs: $font-size-base * 0.85;                   // 0.85rem
+$font-size-lg: $font-size-base * 1.29;                   // 1.29rem
+$font-size-xl: $font-size-base * 1.35;                   // 1.35rem
+$font-size-xxl: $font-size-base * 1.7;                   // 1.7rem
+
+$transition-duration-fast: 0.2s;
+$transition-duration-normal: 0.3s;
+
+// ───────────── LAYOUT ─────────────
+
 .resume-card__sidebar {
   background: transparent !important;
   background-image: none !important;
@@ -11,58 +46,76 @@
 
 /* внутрішня “картка” сайдбара, відсунута від країв */
 .sidebar-inset {
-  background: #333333;               /* темний фон, як просив */
+  background: #333333;               /* темний фон */
   color: #f8f9ff;
 
-  padding: clamp(2rem, 3.5vw, 2.75rem);
-  margin-right: clamp(14px, 2vw, 28px);  /* БІЛА СМУЖКА праворуч */
-  margin-left: clamp(14px, 2vw, 28px);   /* баланс зліва (можеш зменшити) */
+  padding: clamp(
+          $sidebar-inset-padding-min,
+          3.5vw,
+          $sidebar-inset-padding-max
+  );
+  margin-right: clamp(
+          $sidebar-inset-margin-min,
+          2vw,
+          $sidebar-inset-margin-max
+  );  /* біла смужка праворуч */
+  margin-left: clamp(
+          $sidebar-inset-margin-min,
+          2vw,
+          $sidebar-inset-margin-max
+  );
   width: 100%;
   min-height: 100%;
   position: relative;
 }
 
-
 .resume-panel {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3vw, 2.5rem);
+  gap: clamp(
+          $panel-gap,
+          3vw,
+          $space-base * 2.5
+  );
   width: 100%;
   flex: 1;
 
-  position: relative;                         // НОВЕ
-  padding-top: clamp(13rem, 11vw, 13rem);       // місце зверху під аватар
+  position: relative;
+  padding-top: clamp(
+          $space-base * 13,
+          11vw,
+          $space-base * 13
+  );       // місце зверху під аватар
 }
 
 .resume-panel__profile {
-  position: absolute;                        // було grid, тепер абсолют
+  position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -66%);          // половина кола над панеллю, половина в ній
+  transform: translate(-50%, -66%);  // половина кола над панеллю, половина в ній
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.65rem;
-  z-index: 2;                                // щоб було поверх хедера/фону
+  gap: $profile-gap;
+  z-index: 2;
   text-align: center;
 }
 
 .resume-panel__avatar {
   position: relative;
-  width: 350px;
+  width: $avatar-size;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
 
-  /* забираємо старі стилі, які ламали обводки */
   padding: 0;
   border: none;
   background: none;
 
-  /* ТУТ ОБВОДКИ */
+  /* обводки */
   box-shadow:
-          0 0 0 8px #333333,   /* темна обводка */
-          0 0 0 21px #ffffff;   /* біла (вдвічі товща) */
+          0 0 0 $avatar-border-inner #333333,   /* темна */
+          0 0 0 $avatar-border-outer #ffffff;   /* біла */
 }
 
 .resume-panel__avatar img {
@@ -74,7 +127,7 @@
 
 .resume-panel__name {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: $font-size-xl;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -85,34 +138,34 @@
   color: rgba(248, 249, 255, 0.7);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: $font-size-xs;
 }
 
 .resume-panel__title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: $space-base * 0.75;
 
-  font-size: 1.35rem;
+  font-size: $font-size-xl;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #fff;
-  margin: 0 0 0.75rem;
+  margin: 0 0 ($space-base * 0.75);
 }
 
-/* Заголовок "CONTACT ME" з іконкою в кружечку */
+/* Заголовок блоків типу "CONTACT ME", "EDUCATION", "REFERENCES" */
 .panel-badge {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin: 0 0 1.25rem;
+  gap: $space-base * 0.75;
+  margin: 0 0 ($space-base * 1.25);
 }
 
 /* білий круг з іконкою */
 .panel-badge__circle {
-  width: 42px;
-  height: 42px;
+  width: $badge-circle-size;
+  height: $badge-circle-size;
   border-radius: 50%;
   background: #ffffff;
   display: grid;
@@ -120,15 +173,15 @@
 }
 
 .panel-badge__circle i {
-  font-size: 27px;
+  font-size: $badge-icon-size;
   color: #333333;
 }
 
-/* текст CONTACT ME */
+/* текст заголовка панелі */
 .panel-badge__title {
   margin: 0;
   font-family: $font-base;
-  font-size: 1.70rem;
+  font-size: $font-size-xxl;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -136,23 +189,22 @@
   white-space: nowrap;
 }
 
-
-
 .resume-panel__block {
   display: grid;
-  gap: 0.75rem;
+  gap: $space-base * 0.35;
 }
 
+/* CONTACT ME список */
 .resume-panel__list {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.75rem;
+  gap: $space-base * 0.75;
 }
 
 .resume-panel__list div {
   display: grid;
-  gap: 0.3rem;
+  gap: $space-base * 0.3;
   padding: 0;
   border-radius: 0;
   background: none;
@@ -160,7 +212,7 @@
 }
 
 .resume-panel__list dt {
-  font-size: 0.75rem;
+  font-size: $font-size-sm;
   text-transform: uppercase;
   color: rgba(248, 249, 255, 0.6);
   letter-spacing: 0.16em;
@@ -183,50 +235,68 @@
   color: #ffb259;
 }
 
+/* ───────────── EDUCATION ───────────── */
+
 .resume-panel__timeline {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 1.4rem;  // трохи більше повітря між записами
+  gap: $space-base * 1.4;
 }
 
 .resume-panel__timeline li {
   padding-left: 0;
 }
 
-/* НАЗВА УНІВЕРСИТЕТУ */
-.resume-panel__timeline-title {
+/* СПІЛЬНИЙ СТИЛЬ ДЛЯ "ГОЛОВНОГО РЯДКА":
+   назва університету + імʼя референса */
+.resume-panel__timeline-title,
+.reference-name {
   margin: 0;
   font-family: $font-base;
-  font-size: 1.15rem;        // більше, як у макеті
-  font-weight: 800;          // дуже жирний
-  text-transform: uppercase; // ВСІ БУКВИ ВЕЛИКІ
-  letter-spacing: 0.06em;    // трохи розтягнути
-  color: #ffffff;
-}
-
-/* РЯДОК З STEПЕНЕМ */
-.resume-panel__timeline-meta {
-  margin: 0.2rem 0 0;
-  font-family: $font-base;
-  font-size: 0.95rem;        // трохи більший
+  font-size: $font-size-lg;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: rgba(248, 249, 255, 0.8);
-}
-
-/* ДАТИ (якщо в HTML є .resume-panel__timeline-meta2) */
-.resume-panel__timeline-meta2 {
-  margin: 0.25rem 0 0;
-  font-family: $font-base;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: none;      // як у твоєму прикладі
+  letter-spacing: 0.06em;
   color: #ffffff;
 }
 
+/* ЗВИЧАЙНИЙ ТЕКСТ ПІД НИМИ:
+   degree, роки, адреса, телефон, email */
+.resume-panel__timeline-meta,
+.resume-panel__timeline-meta2,
+.reference p {
+  margin: ($space-base * 0.18) 0 0;
+  font-family: $font-base;
+  font-size: $font-size-base;
+  font-weight: 400;
+  text-transform: none;
+  color: rgba(248, 249, 255, 0.8);
+  line-height: 1.4;
+}
 
+/* дати — трохи далі від degree */
+.resume-panel__timeline-meta2 {
+  margin-top: $space-base * 0.3;
+}
+
+/* ───────────── REFERENCES ───────────── */
+
+.references {
+  display: grid;
+  gap: $space-base * 1.4;
+}
+
+.reference {
+  margin: 0;
+}
+
+.reference-name {
+  margin: 0 0 ($space-base * 0.2);
+}
+
+/* посилання в References / Education */
 .resume-panel__link {
   font-weight: 600;
   color: #ffb259;
@@ -238,10 +308,11 @@
   color: #ffd28c;
 }
 
+/* Теги (якщо будуть використовуватись далі) */
 .resume-panel__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: $space-base * 0.5;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -258,17 +329,21 @@
   color: #fff;
 }
 
-
-
 .resume-panel__tags .text-bg-light {
   @include badge(#fff, $color-body);
   border: none;
 }
 
+/* ───────────── ADAPTIVE ───────────── */
+
 @media (max-width: 1199.98px) {
   .resume-card__sidebar,
   .resume-card__main {
-    padding: clamp(2rem, 6vw, 2.75rem);
+    padding: clamp(
+            $space-xl,
+            6vw,
+            $space-xxl
+    );
   }
 }
 
@@ -278,7 +353,6 @@
   }
 
   .resume-panel__profile {
-    gap: 0.75rem;
+    gap: $space-base * 0.75;
   }
 }
-

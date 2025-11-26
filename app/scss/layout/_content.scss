@@ -1,8 +1,78 @@
 @use "../utils" as *;
 
+// ==================== PLACEHOLDER'И ДЛЯ EXPERIENCE ====================
+
+// Базовий елемент досвіду
+%experience-item-base {
+  margin-bottom: 0;
+}
+
+// Хедер (title + date)
+%experience-header-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+// Заголовок посади
+%experience-title-base {
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+// Дата
+%experience-date-base {
+  font-weight: 700;
+  color: #333;
+}
+
+// Компанія
+%experience-company-base {
+  margin: 0.3rem 0 1rem;
+  font-style: italic;
+  color: #333333;
+  font-weight: 600;
+}
+
+// Опис
+%experience-description-base {
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}
+
+// ==================== PLACEHOLDER'И ДЛЯ ЗАГОЛОВКІВ/ІКОНОК ====================
+
+// Базовий layout для заголовку секції з іконкою
+%section-heading-base {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+// Базовий круг з центруванням контенту
+%circle-icon-base {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Базовий текст заголовка
+%section-title-text-base {
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+// ==================== ОСНОВНІ СТИЛІ ====================
+
 .experience-list {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2rem);
+  padding-top: 1rem;
 }
 
 .experience-entry {
@@ -27,161 +97,148 @@
   color: $color-muted;
   line-height: 1.7;
 }
+
+// ==================== EXPERIENCE 1 ====================
+
 .experience-item {
-  margin-bottom: 0;
+  @extend %experience-item-base;
 }
 
 .experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  @extend %experience-header-base;
 }
 
 .experience-title {
-  margin: 0;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.2rem;
+  @extend %experience-title-base;
 }
 
 .experience-date {
-  font-weight: 700;
-  color: #333;
+  @extend %experience-date-base;
 }
 
 .experience-company {
-  margin: 0.3rem 0 1rem;
-  font-style: italic;
-  color: #333333;
-  font-weight: 600;
+  @extend %experience-company-base;
 }
 
 .experience-description {
-  margin: 0;
-  color: #444;
-  line-height: 1.5;
+  @extend %experience-description-base;
 }
+
+// ==================== EXPERIENCE 2 ====================
+
 .experience-item2 {
-  margin-bottom: 0;
+  @extend %experience-item-base;
 }
 
 .experience-header2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  @extend %experience-header-base;
 }
 
 .experience-title2 {
-  margin: 0;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.2rem;
+  @extend %experience-title-base;
 }
 
 .experience-date2 {
-  font-weight: 700;
-  color: #333;
+  @extend %experience-date-base;
 }
 
 .experience-company2 {
-  margin: 0.3rem 0 1rem;
-  font-style: italic;
-  color: #333333;
-  font-weight: 600;
+  @extend %experience-company-base;
 }
 
 .experience-description2 {
-  margin: 0;
-  color: #444;
-  line-height: 1.5;
+  @extend %experience-description-base;
 }
 
+// ==================== EXPERIENCE 3 ====================
+
 .experience-item3 {
-  margin-bottom: 3rem;
+  @extend %experience-item-base;
+  margin-bottom: 3rem; // відмінність від інших
 }
 
 .experience-header3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  @extend %experience-header-base;
 }
 
 .experience-title3 {
-  margin: 0;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.2rem;
+  @extend %experience-title-base;
 }
 
 .experience-date3 {
-  font-weight: 700;
-  color: #333;
+  @extend %experience-date-base;
 }
 
 .experience-company3 {
-  margin: 0.3rem 0 1rem;
-  font-style: italic;
-  color: #333333;
-  font-weight: 600;
+  @extend %experience-company-base;
 }
 
 .experience-description3 {
-  margin: 0;
-  color: #444;
-  line-height: 1.5;
+  @extend %experience-description-base;
 }
 
-.skills-title{
-  font-weight:700;
-  text-transform:uppercase;
-  display:flex; align-items:center; gap:.5rem;
-  margin:0 0 1rem;
+// ==================== SKILLS ====================
+
+.skills-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 1rem;
 }
 
-.skills-grid{
-  display:grid;
+.skills-grid {
+  display: grid;
   grid-template-columns: 1fr 1fr;      /* дві колонки як на макеті */
-  gap: 1rem 3rem;                       /* вертикальний/горизонтальний відступи */
+  gap: 1rem 3rem;                      /* вертикальний/горизонтальний відступи */
   max-width: 570px;
   padding-bottom: 2rem;
 }
 
-.skill{
-  display:grid;
-  grid-template-columns: 1fr 110px;     /* лейбл + вузький прогрес-бар */
-  align-items:center;
+.skill {
+  display: grid;
+  grid-template-columns: 1fr 110px;    /* лейбл + вузький прогрес-бар */
+  align-items: center;
   gap: .75rem;
-
 }
 
-.skill-label{
+.skill-label {
   white-space: nowrap;
   font-weight: 700;
-  color:#333;
+  color: #333;
 }
 
-.skill-bar{
-  height:12px;
-  border:2px solid #333;                /* тонка темна обводка як на зразку */
-  border-radius:999px;
-  padding:2px;                          /* щоб “заливка” не прилипала до рамки */
-  background:transparent;
-  position:relative;
-  overflow:hidden;
+.skill-bar {
+  height: 12px;
+  border: 2px solid #333;             /* тонка темна обводка як на зразку */
+  border-radius: 999px;
+  padding: 2px;                       /* щоб “заливка” не прилипала до рамки */
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
-.skill-fill{
-  display:block;
-  height:100%;
-  border-radius:999px;
-  background:#333;                      /* колір заповнення */
-  width:0;                              /* керується inline-стилем width:% */
+.skill-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #333;                   /* колір заповнення */
+  width: 0;                           /* керується inline-стилем width:% */
 }
+
+// ==================== РОЗДІЛИ РЕЗЮМЕ ====================
+
 .resume-section {
   background: transparent;
   box-shadow: none;
   border: 0;
   border-radius: 0;
+
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* --- Додаткові секції під Skills --- */
@@ -213,13 +270,11 @@
 }
 
 .extra-list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 1.5rem;
 
-    list-style: disc;
-    margin: 0;
-    padding-left: 1.5rem;
-    display: block;   /* ← видаляємо грід */
-
-
+  display: block;   /* ← видаляємо грід */
 
   li {
     color: #333;
@@ -233,37 +288,35 @@
   }
 }
 
-
-/* Адаптив: на вузьких екранах робимо одну колонку */
-@media (max-width:640px){
-  .skills-grid{ grid-template-columns: 1fr; }
-  .skill{ grid-template-columns: 1fr; }
+// Адаптив: на вузьких екранах робимо одну колонку
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill {
+    grid-template-columns: 1fr;
+  }
 }
 
+// ==================== ЗАГОЛОВКИ ТИПУ "SKILLS", "SECTION" ====================
 
 .skills-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  @extend %section-heading-base;
   margin: 0 0 1.5rem;
 }
 
 .skills-heading__icon {
+  @extend %circle-icon-base;
   flex: 0 0 36px;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
   background-color: #333;   // темне коло
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #fff;              // біла іконка
   font-size: 1.2rem;
 }
 
 .skills-heading__title {
-  margin: 0;
-  font-weight: 700;
+  @extend %section-title-text-base;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 1.95rem;
@@ -272,20 +325,16 @@
 }
 
 .section-title {
-  display: flex;
-  align-items: center;
+  @extend %section-heading-base;
   gap: 12px; /* відстань між іконкою і текстом */
   margin-bottom: 20px;
 }
 
 .icon-circle {
+  @extend %circle-icon-base;
   width: 40px;
   height: 40px;
   background-color: #333; /* темний круг */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .icon-circle i {
@@ -294,18 +343,11 @@
 }
 
 .section-title h2 {
+  @extend %section-title-text-base;
   font-size: 30px;
-  font-weight: 700;
-  color: #333;
-  margin: 0;
 }
 
-.resume-section {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+// ==================== LANGUAGES ====================
 
 .extra-list--language {
   display: grid;
