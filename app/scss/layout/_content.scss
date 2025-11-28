@@ -361,3 +361,46 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+/* ===========================
+   АККОРДЕОН ДЛЯ EXPERIENCE
+   =========================== */
+
+/* Кнопка-стрілка */
+.toggle-arrow {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 1.2rem;
+    transition: transform 0.25s ease;
+  }
+}
+
+/* Обертання стрілки */
+.arrow-rotated i {
+  transform: rotate(180deg);
+}
+
+/* Ховаємо контент */
+.is-hidden {
+  display: none !important;
+}
+
+/* Щоб стрілка красиво стояла справа */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+
+  h2 {
+    flex-grow: 1;  /* дає місце для кнопки справа */
+  }
+}
