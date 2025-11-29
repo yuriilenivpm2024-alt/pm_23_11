@@ -361,3 +361,44 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+/* =======================================
+   2. СЛУЖБОВІ КЛАСИ ДЛЯ ЗАВДАННЯ 2 (TOGGLE)
+   ======================================= */
+
+.section-header-toggle,
+.skills-header-toggle {
+  /* Встановлюємо Flexbox для вирівнювання заголовка та стрілки */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer; /* Для візуального підтвердження клікабельності */
+  margin-bottom: 0.5rem; /* Відокремити заголовок від контенту */
+
+  /* Заголовки-обгортки мають розтягуватися */
+  .section-title,
+  .skills-heading {
+    flex-grow: 1;
+  }
+}
+
+/* 1. КЛАС ДЛЯ ПРИХОВУВАННЯ КОНТЕНТУ */
+.is-hidden {
+  /* Приховування контенту */
+  display: none !important;
+}
+
+/* 2. КЛАС ДЛЯ ПОВОРОТУ СТРІЛКИ */
+.js-arrow-icon {
+  /* Стилі для стрілки */
+  color: #333;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease; /* Для плавності повороту */
+  margin-left: 20px; /* Відступ від заголовка */
+  padding-bottom: 1.5rem;
+}
+
+.is-rotated {
+  /* Поворот стрілки на 180 градусів */
+  transform: rotate(180deg);
+}
