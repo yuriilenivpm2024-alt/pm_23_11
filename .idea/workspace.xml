@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b3e2c8ab-2b6d-4f44-8985-ff11e9f77b30" name="Changes" comment="ю">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/html/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/html/_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/html/_main-content.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/html/_main-content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/resume.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/resume.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/layout/_content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/layout/_content.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/yuriilenivpm2024-alt/pm_23_11.git&quot;,
-    &quot;accountId&quot;: &quot;4ca47448-7961-4820-9bf6-bc9f1d24537e&quot;
+    &quot;accountId&quot;: &quot;12c007c8-3ddc-46c6-b74d-465f4261c333&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -60,10 +56,10 @@
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Cherry-picking in main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/лабки web/Labka_1",
+    "last_opened_file_path": "D:/лабки web/pm_23_11",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,10 +72,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\лабки web\pm_23_11\dist" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
       </set>
     </attachedChunks>
   </component>
@@ -116,6 +117,8 @@
       <workItem from="1763749591322" duration="3262000" />
       <workItem from="1764068657603" duration="12599000" />
       <workItem from="1764162877148" duration="6864000" />
+      <workItem from="1764420449423" duration="523000" />
+      <workItem from="1764498032119" duration="518000" />
     </task>
     <task id="LOCAL-00001" summary="ю">
       <option name="closed" value="true" />

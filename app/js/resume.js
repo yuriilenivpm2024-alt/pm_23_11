@@ -1,42 +1,21 @@
-/**
- * ЗАВДАННЯ 3: Масив даних про досвід роботи.
- */
-const jobExperienceData = [
-    {
-        title: "Senior Web Designer",
-        date: "2020 - Present",
-        company: "Creative Agency / Chicago",
-        description: "Lorem Ipsum has been the industry's standard dummy text ever since 1500s, when unknown printer took a galley of type."
-    },
-    {
-        title: "Graphic Designer",
-        date: "2015 - 2020",
-        company: "Creative Market / Chicago",
-        description: "Lorem Ipsum has been the industry's standard dummy text ever since 1500s, when unknown printer took a galley of type."
-    },
-    {
-        title: "Marketing Manager",
-        date: "2013 - 2015",
-        company: "Manufacturing Agency / NJ",
-        description: "Lorem Ipsum has been the industry's standard dummy text ever since 1500s, when unknown printer took a galley of type."
-    }
-];
+// ===============================================
+// === ФУНКЦІЇ ДЛЯ ЛР4 (МОДИФІКОВАНІ ДЛЯ ЛР5) ===
+// ===============================================
 
 /**
- * Завдання 1: Реалізує функцію, яка вставляє повне ім'я користувача
- * в елемент з ID 'personName' і викликається після завантаження DOM.
+ * Завдання 1 (ЛР4, модифіковане для ЛР5): Підставляє повне ім'я з об'єкта даних.
+ * @param {object} personalInfo - Об'єкт, що містить firstName та lastName.
  */
-function setUserName() {
-    const fullName = "Noel Taylor";
+function setUserName(personalInfo) {
     const nameElement = document.getElementById('personName');
     if (nameElement) {
-        nameElement.textContent = fullName;
+        // Використовуємо поля firstName та lastName з JSON
+        nameElement.textContent = `${personalInfo.firstName} ${personalInfo.lastName}`;
     }
 }
 
 /**
- * Завдання 2: Налаштовує перемикання видимості контенту та поворот стрілки
- * для всіх секцій, позначених класом .js-toggle-header.
+ * Завдання 2 (ЛР4): Налаштовує перемикання видимості контенту.
  */
 function setupContentToggle() {
     const toggleHeaders = document.querySelectorAll('.js-toggle-header');
@@ -45,7 +24,6 @@ function setupContentToggle() {
         const content = header.nextElementSibling;
         const arrow = header.querySelector('.js-arrow-icon');
 
-        // Встановлюємо контент прихованим за замовчуванням
         if (content) {
             content.classList.add('is-hidden');
         }
@@ -61,25 +39,19 @@ function setupContentToggle() {
     });
 }
 
-
 /**
- * ЗАВДАННЯ 3: Функція, яка генерує HTML розмітку на основі масиву даних
- * та вставляє її у контейнер з ID 'experience-container'.
+ * Завдання 3 (ЛР4, модифіковане для ЛР5): Генерує розмітку Досвіду роботи з масиву.
+ * @param {Array} data - Масив записів про досвід роботи.
  */
 function renderJobExperience(data) {
     const container = document.getElementById('experience-container');
 
-    if (!container) {
-        console.error("Контейнер з ID 'experience-container' не знайдено.");
-        return;
-    }
+    if (!container) return;
 
-    // 1. Очистити вміст контейнера перед вставлянням (вимога завдання)
+    // Очищення вмісту (вимога ЛР4)
     container.innerHTML = '';
 
-    // 2. Згенерувати розмітку
     let htmlContent = data.map((job, index) => {
-        // Визначаємо класи на основі індексу, щоб зберегти оригінальні стилі (item, item2, item3)
         const suffix = index === 0 ? '' : index + 1;
 
         const itemClass = `experience-item${suffix}`;
@@ -95,9 +67,7 @@ function renderJobExperience(data) {
                     <h3 class="${titleClass}">${job.title}</h3>
                     <span class="${dateClass}">${job.date}</span>
                 </div>
-
                 <p class="${companyClass}"><em>${job.company}</em></p>
-
                 <div class="${descriptionClass}">
                     <p>${job.description}</p>
                 </div>
@@ -105,22 +75,68 @@ function renderJobExperience(data) {
         `;
     }).join('');
 
-    // 3. Вставити згенеровану розмітку
     container.innerHTML = htmlContent;
 }
 
 
 // ==========================================
-// Виклики функцій після завантаження документа
+// === ОСНОВНА ЛОГІКА ЛР5 (AJAX / FETCH) ===
+// ==========================================
+
+/**
+ * Функція для інтеграції всіх завантажених даних у веб-інтерфейс (Завдання 3 ЛР5).
+ * @param {object} data - Об'єкт, завантажений з data.json.
+ */
+function integrateData(data) {
+    // 1. Заміна імені (personalInfo)
+    setUserName(data.personalInfo);
+
+    // 2. Побудова списку Досвіду роботи (jobs)
+    renderJobExperience(data.jobs);
+
+    // (Тут могли б бути виклики для навичок, мов тощо)
+}
+
+
+/**
+ * Функція завантаження даних із data.json засобами AJAX (Fetch API) (Завдання 2 ЛР5).
+ */
+function loadData() {
+    // Використовуємо відносний шлях, який має працювати на локальному сервері
+    fetch('./data.json')
+        .then(response => {
+            if (!response.ok) {
+                // Кидаємо помилку, якщо статус HTTP не 200
+                throw new Error(`Помилка завантаження даних: статус ${response.status} ${response.statusText}`);
+            }
+            // Перетворення відповіді у JavaScript-об'єкт (JSON)
+            return response.json();
+        })
+        .then(data => {
+            // Успішне завантаження: інтегруємо дані
+            integrateData(data);
+        })
+        .catch(error => {
+            // Обробка помилок та відображення повідомлення (вимога Завдання 2 ЛР5)
+            console.error('AJAX/Fetch Error:', error.message);
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.innerHTML =
+                    '<div style="text-align: center; padding: 50px; color: #cc0000; border: 1px solid #ffcccc; background: #ffeeee;">' +
+                    'Помилка: Не вдалося завантажити дані. (Перевірте консоль та запуск через локальний сервер)</div>';
+            }
+        });
+}
+
+
+// ==========================================
+// === ЗАПУСК ===
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Завдання 1
-    setUserName();
+    // Завдання 2 ЛР5: Спочатку завантажуємо дані
+    loadData();
 
-    // Завдання 2
+    // Завдання 2 ЛР4: Налаштування перемикання (виконується одразу)
     setupContentToggle();
-
-    // Завдання 3
-    renderJobExperience(jobExperienceData);
 });

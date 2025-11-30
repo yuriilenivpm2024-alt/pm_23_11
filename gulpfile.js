@@ -80,8 +80,25 @@ const watch_task = () => {
     watch('app/img/*', series(img_task, reload));
 };
 
-// === Build & Default ===
+
 const build = parallel(html_task, scss_task, js_task, img_task, bootstrapCSS, bootstrapJS);
+
+
+// ... інші функції (scripts, styles, html, etc.) ...
+
+// Нове завдання: Копіювання data.json
+function copyJson() {
+    // 1. Беремо файл data.json з кореня проекту
+    return src('./data.json')
+        // 2. Копіюємо його до каталогу збірки (dist)
+        .pipe(dest('./dist'));
+}
+
+
+exports.copyJson = copyJson;
+exports.default = series(
+    copyJson,
+);
 
 exports.build = build;
 exports.default = series(build, browserSync_task, watch_task);

@@ -1,0 +1,48 @@
+{
+  "personalInfo": {
+    "firstName": "Noel",
+    "lastName": "Taylor"
+  },
+  "jobs": [
+    {
+      "title": "Senior Web Designer",
+      "date": "2020 - Present",
+      "company": "Creative Agency / Chicago",
+      "description": "Розробка комплексних веб-рішень, управління командою дизайнерів та забезпечення високої якості UX/UI."
+    },
+    {
+      "title": "Graphic Designer",
+      "date": "2015 - 2020",
+      "company": "Creative Market / Chicago",
+      "description": "Створення візуальних концептів, логотипів та фірмового стилю для B2B клієнтів."
+    },
+    {
+      "title": "Marketing Manager",
+      "date": "2013 - 2015",
+      "company": "Manufacturing Agency / NJ",
+      "description": "Планування та реалізація маркетингових кампаній, аналіз ринку та ефективності рекламних каналів."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Adobe Photoshop",
+      "value": 70
+    },
+    {
+      "name": "Microsoft Word",
+      "value": 55
+    },
+    {
+      "name": "HTML-5 / CSS-3",
+      "value": 80
+    },
+    {
+      "name": "Adobe Illustrator",
+      "value": 85
+    },
+    {
+      "name": "Microsoft PowerPoint",
+      "value": 75
+    }
+  ]
+}
